@@ -1,0 +1,34 @@
+package Tasks;
+
+import PageObjects.ProductDescriptionPage;
+import PageObjects.ShoppingCartSummaryPage;
+import com.aventstack.extentreports.Status;
+import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.WebDriver;
+
+public class ShoppingCartSummaryTask {
+
+    private static WebDriver driver;
+    private static ShoppingCartSummaryPage shoppingCartSummaryPage;
+
+    public ShoppingCartSummaryTask(WebDriver driver) {
+        this.driver = driver;
+        shoppingCartSummaryPage = new ShoppingCartSummaryPage(this.driver);
+    }
+
+    public void proceedToRegister() {
+
+        checkSelectedProduct();
+
+    }
+
+    public void checkSelectedProduct() {
+        //try {
+            String productName = shoppingCartSummaryPage.getProductNameList().getText();
+            Assertions.assertEquals("Faded Short Sleeve T-shirts", productName);
+            //Relatorio.log(Status.PASS, "Produto Selecionado com Sucesso", CapturaDeTela.capture(driver));
+        //} catch (Error | Exception e) {
+            //Relatorio.log(Status.FAIL, "Produto Não Foi Selecionado com Sucesso", CapturaDeTela.capture(driver));
+        //}
+    }
+}
