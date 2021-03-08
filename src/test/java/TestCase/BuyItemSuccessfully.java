@@ -1,6 +1,7 @@
 package TestCase;
 
 import PageObjects.ShoppingCartAddressesPage;
+import PageObjects.ShoppingCartOrderConfirmationPage;
 import Suporte.TestBase;
 import Tasks.*;
 import Utilitarios.FixedWait;
@@ -18,6 +19,9 @@ public class BuyItemSuccessfully extends TestBase {
     ShoppingCartCreateAnAccountTask shoppingCartCreateAnAccountTask = new ShoppingCartCreateAnAccountTask(driver);
     ShoppingCartAddressesTask shoppingCartAddressesTask = new ShoppingCartAddressesTask(driver);
     ShoppingCartShippingTask shoppingCartShippingTask = new ShoppingCartShippingTask(driver);
+    ShoppingCartPaymentTask shoppingCartPaymentTask = new ShoppingCartPaymentTask(driver);
+    ShoppingCartOrderSummaryTask shoppingCartOrderSummaryTask = new ShoppingCartOrderSummaryTask(driver);
+    ShoppingCartOrderConfirmationTask shoppingCartOrderConfirmationTask = new ShoppingCartOrderConfirmationTask(driver);
 
     @Test
     public void BuyItemSucessfully() throws Exception {
@@ -38,6 +42,13 @@ public class BuyItemSuccessfully extends TestBase {
         shoppingCartAddressesTask.proceedToCheckout();
 
         shoppingCartShippingTask.proceedToPayment();
+
+        shoppingCartPaymentTask.checkPurchaseValue();
+        shoppingCartPaymentTask.chooseCardPayment();
+
+        shoppingCartOrderSummaryTask.confirmOrder();
+
+        shoppingCartOrderConfirmationTask.confirmOrderComplete();
 
         FixedWait.waitInSeconds(5);
 
