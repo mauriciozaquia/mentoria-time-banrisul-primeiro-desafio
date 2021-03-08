@@ -22,7 +22,7 @@ public class ShoppingCartCreateAnAccountTask {
     }
 
     public void completeFields() {
-        FixedWait.waitInSeconds(5); // verificar o motivo de estar quebrando o teste se retirar essa linha
+        FixedWait.waitInSeconds(3); // verificar o motivo de estar quebrando o teste se retirar essa linha
 
         verificaTituloCarregado();
         selectGenreMr();
@@ -35,8 +35,8 @@ public class ShoppingCartCreateAnAccountTask {
         Integer month = 6;
         String year = "1994";
         String company = "Company";
-        String address1 = "Address1";
-        String address2 = "Address2";
+        String address1 = "Endereço de teste, 100";
+        String address2 = "";
         String city = "Cachoeirinha";
         String state = "California";
         String zipCode = "94130";
@@ -53,8 +53,8 @@ public class ShoppingCartCreateAnAccountTask {
         shoppingCartCreateAnAccountPage.dropdownDayOfDateOfBirth().selectByValue(day);
         shoppingCartCreateAnAccountPage.dropdownMonthOfDateOfBirth().selectByIndex(month);
         shoppingCartCreateAnAccountPage.dropdownYearOfDateOfBirth().selectByValue(year);
-        shoppingCartCreateAnAccountPage.getInputFirstName().sendKeys(firstName);
-        shoppingCartCreateAnAccountPage.getInputLastName().sendKeys(lastName);
+        //shoppingCartCreateAnAccountPage.getInputFirstName().sendKeys(firstName); // não necessita pois o site completa
+        //shoppingCartCreateAnAccountPage.getInputLastName().sendKeys(lastName); // não necessite pois o site completa
         shoppingCartCreateAnAccountPage.getInputCompany().sendKeys(company);
         shoppingCartCreateAnAccountPage.getInputAddress1().sendKeys(address1);
         shoppingCartCreateAnAccountPage.getInputAddress2().sendKeys(address2);
