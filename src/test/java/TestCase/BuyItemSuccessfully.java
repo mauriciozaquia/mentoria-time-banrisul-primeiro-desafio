@@ -17,6 +17,7 @@ public class BuyItemSuccessfully extends TestBase {
     ShoppingCartAuthenticationTask shoppingCartAuthenticationTask = new ShoppingCartAuthenticationTask(driver);
     ShoppingCartCreateAnAccountTask shoppingCartCreateAnAccountTask = new ShoppingCartCreateAnAccountTask(driver);
     ShoppingCartAddressesTask shoppingCartAddressesTask = new ShoppingCartAddressesTask(driver);
+    ShoppingCartShippingTask shoppingCartShippingTask = new ShoppingCartShippingTask(driver);
 
     @Test
     public void BuyItemSucessfully() throws Exception {
@@ -35,6 +36,8 @@ public class BuyItemSuccessfully extends TestBase {
         shoppingCartCreateAnAccountTask.submitAccount();
 
         shoppingCartAddressesTask.proceedToCheckout();
+
+        shoppingCartShippingTask.proceedToPayment();
 
         FixedWait.waitInSeconds(5);
 
