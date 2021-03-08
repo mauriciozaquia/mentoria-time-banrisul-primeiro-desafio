@@ -16,6 +16,11 @@ public class ShoppingCartCreateAnAccountPage {
         wait = new Waits(driver);
     }
 
+    public WebElement getLabelRadioGenderVisibility() {
+        String tempXpath = "//*[@id=" + '"' + "account-creation_form" + '"' + "]/div[1]/div[1]/div[1]/label";
+        return wait.visibilityOfElement(By.xpath(tempXpath));
+    }
+
     public WebElement getInputRadioGender() {
         String tempXpath = "//*[@id=" + '"' + "id_gender1" + '"' + "]";
         WebElement inputRadioGender = driver.findElement(By.xpath(tempXpath));

@@ -28,7 +28,9 @@ public class ShoppingCartCreateAnAccountTask {
     }
 
     public void completeFields() {
-        FixedWait.waitInSeconds(2); // verificar o motivo de estar quebrando o teste se retirar essa linha
+        //FixedWait.waitInSeconds(3); // verificar o motivo de estar quebrando o teste se retirar essa linha
+
+        verificaPaginaDisponivel();
 
         verificaTituloCarregado();
 
@@ -83,6 +85,10 @@ public class ShoppingCartCreateAnAccountTask {
             Relatorio.log(Status.FAIL, "Título do formulário de cadastro NÃO carregou com sucesso", CapturaDeTela.fullPageBase64(driver));
         }
 
+    }
+
+    public void verificaPaginaDisponivel(){
+        shoppingCartCreateAnAccountPage.getLabelRadioGenderVisibility();
     }
 
     public void submitAccount() {
