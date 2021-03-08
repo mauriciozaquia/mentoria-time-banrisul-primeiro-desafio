@@ -22,7 +22,7 @@ public class ShoppingCartSummaryPage {
     }
 
     public WebElement getButtonProceedToCheckout() {
-        String tempXpath = "";
+        String tempXpath = "//*[@id=" + '"' + "center_column" + '"' + "]/p[2]/a[1]";
         WebElement buttonProceedToCheckout = driver.findElement(By.xpath(tempXpath));
         return wait.loadElement(buttonProceedToCheckout);
     }

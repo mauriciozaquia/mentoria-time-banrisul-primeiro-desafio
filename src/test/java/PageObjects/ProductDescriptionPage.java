@@ -23,7 +23,6 @@ public class ProductDescriptionPage {
 
     public WebElement getButtonProceedToCheckout() {
         String tempXpath = "//*[@id=" + '"' + "layer_cart" + '"' + "]/div[1]/div[2]/div[4]/a";
-        System.out.println(tempXpath);
         WebElement buttonProceedToCheckout = driver.findElement(By.xpath(tempXpath));
         return wait.loadElement(buttonProceedToCheckout);
     }

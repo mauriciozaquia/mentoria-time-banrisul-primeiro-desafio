@@ -19,6 +19,7 @@ public class ShoppingCartSummaryTask {
     public void proceedToRegister() {
 
         checkSelectedProduct();
+        shoppingCartSummaryPage.getButtonProceedToCheckout().click();
 
     }
 
