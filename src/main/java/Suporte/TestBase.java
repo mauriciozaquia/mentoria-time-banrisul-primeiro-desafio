@@ -24,7 +24,7 @@ public class TestBase extends DriverManager {
     @AfterEach
     public void closeDriver() {
         quitDriver();
-        //Relatorio.fecha();
+        Relatorio.fecha();
     }
 
 }

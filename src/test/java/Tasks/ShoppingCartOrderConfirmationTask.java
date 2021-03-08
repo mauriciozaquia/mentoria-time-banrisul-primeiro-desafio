@@ -2,6 +2,9 @@ package Tasks;
 
 import PageObjects.ShoppingCartOrderConfirmationPage;
 import PageObjects.ShoppingCartOrderSummaryPage;
+import Suporte.CapturaDeTela;
+import Suporte.Relatorio;
+import com.aventstack.extentreports.Status;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 
@@ -16,13 +19,12 @@ public class ShoppingCartOrderConfirmationTask {
     }
 
     public void confirmOrderComplete() {
-
         try {
             Assertions.assertEquals("Your order on My Store is complete.", shoppingCartOrderConfirmationPage.getLabelChequeIndent().getText());
-        } catch (Exception | Error e) {
-
+            Relatorio.log(Status.PASS, "Compra efetuada com sucesso!", CapturaDeTela.fullPageBase64(driver));
+        } catch (Error | Exception e) {
+            Relatorio.log(Status.FAIL, "Problema para finalizar a compra!", CapturaDeTela.fullPageBase64(driver));
         }
-
     }
 
 }

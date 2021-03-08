@@ -17,7 +17,7 @@ public class ProductDescriptionTask {
         productDescriptionPage.getButtonAddToCart().click();
     }
 
-    public void proceedToCheckout(){
+    public void proceedToCheckout() {
         productDescriptionPage.getButtonProceedToCheckout().click();
     }
 }

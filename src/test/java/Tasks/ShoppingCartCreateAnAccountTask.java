@@ -1,8 +1,12 @@
 package Tasks;
 
 import PageObjects.ShoppingCartCreateAnAccountPage;
+import Suporte.CapturaDeTela;
+import Suporte.Relatorio;
 import Utilitarios.FakersGenerator;
+import Utilitarios.FakersGeneratorPtBr;
 import Utilitarios.FixedWait;
+import com.aventstack.extentreports.Status;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 
@@ -10,6 +14,7 @@ public class ShoppingCartCreateAnAccountTask {
 
     private static WebDriver driver;
     private static ShoppingCartCreateAnAccountPage shoppingCartCreateAnAccountPage;
+    private static FakersGeneratorPtBr fakerPtBr = new FakersGeneratorPtBr();
     private static FakersGenerator faker = new FakersGenerator();
 
     public ShoppingCartCreateAnAccountTask(WebDriver driver) {
@@ -18,33 +23,35 @@ public class ShoppingCartCreateAnAccountTask {
     }
 
     public void selectGenreMr() {
-        shoppingCartCreateAnAccountPage.getInputRadioGender().click();
+        //shoppingCartCreateAnAccountPage.getInputRadioGender().click();
+        shoppingCartCreateAnAccountPage.getLabelRadioGender().click();
     }
 
     public void completeFields() {
-        FixedWait.waitInSeconds(3); // verificar o motivo de estar quebrando o teste se retirar essa linha
+        FixedWait.waitInSeconds(2); // verificar o motivo de estar quebrando o teste se retirar essa linha
 
         verificaTituloCarregado();
+
         selectGenreMr();
 
         //fields
-        String firstName = faker.pegaPrimeiroNome();
-        String lastName = faker.pegaUltimoNome();
+        String firstName = fakerPtBr.getFirstName();
+        String lastName = fakerPtBr.getLastName();
         String password = "12345";
         String day = "19";
         Integer month = 6;
-        String year = "1994";
-        String company = "Company";
+        String year = "1980";
+        String company = fakerPtBr.getCompanyName();
         String address1 = "Endereço de teste, 100";
         String address2 = "";
-        String city = "Cachoeirinha";
+        String city = fakerPtBr.getCity();
         String state = "California";
-        String zipCode = "94130";
+        String zipCode = "91400";
         String country = "United States";
         String additionalInformation = "Informações Adicionais";
-        String homePhone = "(51)99999999";
-        String mobilePhone = "(51)99999999";
-        String adressAlias = "Adress Alias";
+        String homePhone = fakerPtBr.getPhone();
+        String mobilePhone = fakerPtBr.getMobilePhone();
+        String adressAlias = "Endereço 1";
 
         // actions
         shoppingCartCreateAnAccountPage.getInputCustomerFirstName().sendKeys(firstName);
@@ -69,7 +76,13 @@ public class ShoppingCartCreateAnAccountTask {
     }
 
     public void verificaTituloCarregado() {
-        Assertions.assertTrue(shoppingCartCreateAnAccountPage.getTitleYourPersonInformation().isDisplayed());
+        try {
+            Assertions.assertTrue(shoppingCartCreateAnAccountPage.getTitleYourPersonInformation().isDisplayed());
+            Relatorio.log(Status.PASS, "Título do formulário de cadastro carregou com sucesso", CapturaDeTela.fullPageBase64(driver));
+        } catch (Error | Exception e) {
+            Relatorio.log(Status.FAIL, "Título do formulário de cadastro NÃO carregou com sucesso", CapturaDeTela.fullPageBase64(driver));
+        }
+
     }
 
     public void submitAccount() {

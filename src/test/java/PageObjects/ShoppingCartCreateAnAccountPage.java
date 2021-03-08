@@ -22,6 +22,12 @@ public class ShoppingCartCreateAnAccountPage {
         return wait.loadElement(inputRadioGender);
     }
 
+    public WebElement getLabelRadioGender() {
+        String tempXpath = "//*[@id=" + '"' + "account-creation_form" + '"' + "]/div[1]/div[1]/div[1]/label";
+        WebElement element = driver.findElement(By.xpath(tempXpath));
+        return wait.loadElement(element);
+    }
+
     public WebElement getTitleYourPersonInformation() {
         String tempXpath = "//*[@id=" + '"' + "account-creation_form" + '"' + "]/div[1]/h3";
         WebElement inputTitleYourPersonInformation = driver.findElement(By.xpath(tempXpath));

@@ -2,12 +2,16 @@ package Utilitarios;
 
 import com.github.javafaker.Faker;
 
-public class FakersGenerator {
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class FakersGeneratorPtBr {
 
     private Faker faker;
 
-    public FakersGenerator() {
-        faker = new Faker();
+    public FakersGeneratorPtBr() {
+        faker = new Faker(new Locale("pt-BR"));
     }
 
     public String getFirstName() {

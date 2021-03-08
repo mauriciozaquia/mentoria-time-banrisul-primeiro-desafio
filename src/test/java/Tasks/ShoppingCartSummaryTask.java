@@ -1,7 +1,8 @@
 package Tasks;
 
-import PageObjects.ProductDescriptionPage;
 import PageObjects.ShoppingCartSummaryPage;
+import Suporte.CapturaDeTela;
+import Suporte.Relatorio;
 import com.aventstack.extentreports.Status;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
@@ -24,12 +25,12 @@ public class ShoppingCartSummaryTask {
     }
 
     public void checkSelectedProduct() {
-        //try {
+        try {
             String productName = shoppingCartSummaryPage.getProductNameList().getText();
             Assertions.assertEquals("Faded Short Sleeve T-shirts", productName);
-            //Relatorio.log(Status.PASS, "Produto Selecionado com Sucesso", CapturaDeTela.capture(driver));
-        //} catch (Error | Exception e) {
-            //Relatorio.log(Status.FAIL, "Produto Não Foi Selecionado com Sucesso", CapturaDeTela.capture(driver));
-        //}
+            Relatorio.log(Status.PASS, "Produto Selecionado com Sucesso", CapturaDeTela.fullPageBase64(driver));
+        } catch (Error | Exception e) {
+            Relatorio.log(Status.FAIL, "Produto Não Foi Selecionado com Sucesso", CapturaDeTela.fullPageBase64(driver));
+        }
     }
 }

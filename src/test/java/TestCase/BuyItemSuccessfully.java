@@ -1,8 +1,8 @@
 package TestCase;
 
-import PageObjects.ShoppingCartAddressesPage;
-import PageObjects.ShoppingCartOrderConfirmationPage;
+import Suporte.Relatorio;
 import Suporte.TestBase;
+import Suporte.TipoRelatorio;
 import Tasks.*;
 import Utilitarios.FixedWait;
 import org.junit.jupiter.api.Test;
@@ -25,6 +25,8 @@ public class BuyItemSuccessfully extends TestBase {
 
     @Test
     public void BuyItemSucessfully() throws Exception {
+
+        Relatorio.criaTeste("Realizar Compra com Sucesso", TipoRelatorio.SINGLE);
 
         indexTask.selectProduct();
 

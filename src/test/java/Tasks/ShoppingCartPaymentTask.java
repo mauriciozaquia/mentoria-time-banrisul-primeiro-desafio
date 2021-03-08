@@ -2,6 +2,9 @@ package Tasks;
 
 import PageObjects.ShoppingCartPaymentPage;
 import PageObjects.ShoppingCartSummaryPage;
+import Suporte.CapturaDeTela;
+import Suporte.Relatorio;
+import com.aventstack.extentreports.Status;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 
@@ -22,8 +25,9 @@ public class ShoppingCartPaymentTask {
     public void checkPurchaseValue() {
         try {
             Assertions.assertEquals("$18.51", shoppingCartPaymentPage.getLabelTotalPrice().getText());
+            Relatorio.log(Status.PASS, "Preço correto!", CapturaDeTela.fullPageBase64(driver));
         } catch (Error | Exception e) {
-
+            Relatorio.log(Status.FAIL, "Preço diferente do inicial!", CapturaDeTela.fullPageBase64(driver));
         }
     }
 
